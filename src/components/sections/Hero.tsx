@@ -51,7 +51,10 @@ export function Hero() {
 
           <div className="flex-1 w-full max-w-sm md:max-w-md lg:max-w-none relative">
             <AnimatedSection animation="fade-up" delay={500} className="lg:translate-x-12 xl:translate-x-20">
-              <PhoneMockup title="EchoMind Dashboard" />
+              <PhoneMockup 
+                imageSrc="/images/first-look.png" 
+                isAutoScroll={false} 
+              />
             </AnimatedSection>
           </div>
 

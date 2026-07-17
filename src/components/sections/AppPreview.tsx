@@ -1,10 +1,16 @@
-
+import { useState } from 'react';
 import { AnimatedSection } from '../ui/AnimatedSection';
 import { SectionHeading } from '../ui/SectionHeading';
 import { PhoneMockup } from '../ui/PhoneMockup';
 import { motion } from 'framer-motion';
 
 export function AppPreview() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleSequenceComplete = () => {
+    setActiveIndex((prev) => (prev + 1) % 3);
+  };
+
   return (
     <section id="preview" className="py-24 md:py-32 bg-white overflow-hidden relative">
       {/* Decorative gradient */}
@@ -20,23 +26,39 @@ export function AppPreview() {
 
         <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-6 lg:gap-10 mt-20">
           <AnimatedSection delay={100} animation="fade-up" className="md:translate-y-12 w-full md:w-auto flex justify-center">
-            <PhoneMockup title="Dashboard Emosional" />
+            <PhoneMockup 
+              imageSrc="/images/dashboard.png"
+              isAutoScroll={true}
+              isActive={activeIndex === 0}
+              onSequenceComplete={handleSequenceComplete}
+            />
           </AnimatedSection>
           
           <AnimatedSection delay={300} animation="fade-up" className="z-10 w-full md:w-auto flex justify-center">
             <motion.div whileHover={{ scale: 1.02 }} transition={{ type: "spring" }}>
-              <PhoneMockup title="Klasifikasi Mood" className="md:scale-105" />
+              <PhoneMockup 
+                imageSrc="/images/analytics.png"
+                className="md:scale-105"
+                isAutoScroll={true}
+                isActive={activeIndex === 1}
+                onSequenceComplete={handleSequenceComplete}
+              />
             </motion.div>
           </AnimatedSection>
           
           <AnimatedSection delay={500} animation="fade-up" className="md:translate-y-12 w-full md:w-auto flex justify-center">
-            <PhoneMockup title="Rekomendasi Musik" />
+            <PhoneMockup 
+              imageSrc="/images/journal.png"
+              isAutoScroll={true}
+              isActive={activeIndex === 2}
+              onSequenceComplete={handleSequenceComplete}
+            />
           </AnimatedSection>
         </div>
 
         <AnimatedSection delay={700}>
           <p className="text-center text-[13px] md:text-[14px] text-[#5e5e5e] mt-24 max-w-lg mx-auto">
-            * Area di atas adalah ruang *placeholder* (App Preview). Desain aplikasi sedang dalam tahap pengembangan dan dapat berubah sewaktu-waktu.
+            Arahkan kursor ke mockup untuk melihat detail lebih lama. Animasi berjalan bergantian.
           </p>
         </AnimatedSection>
       </div>
