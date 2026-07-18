@@ -16,7 +16,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '18' # Sesuaikan dengan versi Node.js jika perlu
+        node-version: '20' # Diperbarui ke versi 20 karena Vite/Rolldown membutuhkannya
 
     - name: Install Dependencies
       run: npm install
