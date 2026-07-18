@@ -31,4 +31,4 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./dist/
-        server-dir: ./public_html/ # Pastikan ini sesuai dengan folder tujuan di Hostinger
+        server-dir: ./ # Ubah ke root karena user FTP Hostinger biasanya langsung mengarah ke public_html
